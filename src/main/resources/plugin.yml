@@ -1,0 +1,7 @@
+name: Pillars
+version: '1.0-SNAPSHOT'
+main: fun.mikolaj0524.pillars.Pillars
+api-version: '1.21'
+authors: [ Mikolaj0524 ]
+description: plugin
+website: https://mikolaj0524.fun
