@@ -1,6 +1,8 @@
 package fun.mikolaj0524.pillars;
 
+import fun.mikolaj0524.pillars.Elements.PlaceHolderApiHook;
 import fun.mikolaj0524.pillars.Events.*;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,7 +16,10 @@ public final class Pillars extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+		getServer().getLogger().info("Lucky pillars = start!");
 		instance = this;
+
+		saveDefaultConfig();
 
 		PluginManager manager = getServer().getPluginManager();
 		manager.registerEvents(new BlockBreak(), this);
@@ -25,17 +30,21 @@ public final class Pillars extends JavaPlugin {
 		manager.registerEvents(new SignClick(), this);
 		manager.registerEvents(new Damage(), this);
 
-
 		loop();
 		loadLocations();
 		itemsLoop();
 		createSign();
+		getCommand("luckypillars").setExecutor(new Command());
+		getCommand("luckypillars").setTabCompleter(new Command());
 
+		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+			new PlaceHolderApiHook().register();
+		}
 	}
 
 	@Override
 	public void onDisable() {
-
+		getServer().getLogger().info("Lucky pillars = stop!");
 	}
 
 	public static Pillars getPluginInstance(){

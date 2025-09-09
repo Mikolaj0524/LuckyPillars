@@ -39,7 +39,7 @@ public class SignManager {
 	public static void signClick(Player player){
 		if(player.hasPermission("pillars.start")){
 			if(gameState){
-				player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
+				soundToPlayer(player, Sound.BLOCK_NOTE_BLOCK_BASS);
 				messageToPlayer(player, "Game is now running!");
 			}
 			else {
@@ -48,8 +48,8 @@ public class SignManager {
 			}
 		}
 		else{
-			player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
 			messageToPlayer(player, "You don't have <pillars.start> permission!");
+			soundToPlayer(player, Sound.BLOCK_NOTE_BLOCK_BASS);
 		}
 	}
 

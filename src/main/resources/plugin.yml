@@ -6,3 +6,6 @@ load: POSTWORLD
 authors: [ Mikolaj0524 ]
 description: plugin
 website: https://mikolaj0524.fun
+commands:
+  luckypillars:
+    description: Lucky pillars manage command!

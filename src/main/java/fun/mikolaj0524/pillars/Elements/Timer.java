@@ -1,8 +1,10 @@
 package fun.mikolaj0524.pillars.Elements;
 
 import fun.mikolaj0524.pillars.Objects.Place;
+import org.bukkit.Sound;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static fun.mikolaj0524.pillars.Elements.Communication.soundToInGamePlayers;
 import static fun.mikolaj0524.pillars.Elements.Communication.titleToAll;
 import static fun.mikolaj0524.pillars.Elements.Game.*;
 import static fun.mikolaj0524.pillars.Elements.RandomItem.giveItems;
@@ -12,7 +14,7 @@ import static fun.mikolaj0524.pillars.Pillars.getPluginInstance;
 public class Timer {
 
 	public static Integer time = 0;
-	public static Integer itemTimespan = 20; // In seconds
+	public static Integer itemTimespan = getPluginInstance().getConfig().getInt("timeBetweenDrop"); // In seconds
 
 	public static void loop(){
 		new BukkitRunnable(){
@@ -43,21 +45,23 @@ public class Timer {
 	public static void task(){
 
 		switch(time){
-			case 1: titleToAll("&410"); break;
-			case 2: titleToAll("&c9"); break;
-			case 3: titleToAll("&68"); break;
-			case 4: titleToAll("&a7"); break;
-			case 5: titleToAll("&96"); break;
+			case 1: titleToAll("&410"); soundToInGamePlayers(Sound.UI_BUTTON_CLICK);  break;
+			case 2: titleToAll("&c9"); soundToInGamePlayers(Sound.UI_BUTTON_CLICK); break;
+			case 3: titleToAll("&68"); soundToInGamePlayers(Sound.UI_BUTTON_CLICK); break;
+			case 4: titleToAll("&a7"); soundToInGamePlayers(Sound.UI_BUTTON_CLICK); break;
+			case 5: titleToAll("&96"); soundToInGamePlayers(Sound.UI_BUTTON_CLICK); break;
 			case 6:
 				teleportPlayers(Place.AREA);
 				titleToAll("&35");
+				soundToInGamePlayers(Sound.UI_BUTTON_CLICK);
 			break;
-			case 7: titleToAll("&b4"); break;
-			case 8: titleToAll("&23"); break;
-			case 9: titleToAll("&a2"); break;
+			case 7: titleToAll("&b4"); soundToInGamePlayers(Sound.UI_BUTTON_CLICK); break;
+			case 8: titleToAll("&23"); soundToInGamePlayers(Sound.UI_BUTTON_CLICK); break;
+			case 9: titleToAll("&a2"); soundToInGamePlayers(Sound.UI_BUTTON_CLICK); break;
 			case 10:
 				freePlayers = true;
 				titleToAll("&aSTART!");
+				soundToInGamePlayers(Sound.BLOCK_ENCHANTMENT_TABLE_USE);
 			break;
 			case 15:
 				dropItems = true;

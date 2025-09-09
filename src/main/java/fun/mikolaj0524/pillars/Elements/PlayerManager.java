@@ -3,6 +3,7 @@ package fun.mikolaj0524.pillars.Elements;
 import fun.mikolaj0524.pillars.Objects.Place;
 import fun.mikolaj0524.pillars.Objects.PlayerData;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static fun.mikolaj0524.pillars.Elements.Communication.messageToAll;
+import static fun.mikolaj0524.pillars.Elements.Communication.soundToInGamePlayers;
 import static fun.mikolaj0524.pillars.Elements.Game.isEnd;
 import static fun.mikolaj0524.pillars.Elements.TeleportPlayer.teleportToSpawn;
 
@@ -39,6 +41,7 @@ public class PlayerManager {
 	public static void playerDeath(Player player1, Player player2){
 
 		teleportToSpawn(player1);
+		soundToInGamePlayers(Sound.ENTITY_LIGHTNING_BOLT_THUNDER);
 		if(player2 == null){
 			messageToAll(player1.getDisplayName() + " died!");
 		}

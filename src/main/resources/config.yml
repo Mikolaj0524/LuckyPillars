@@ -1,0 +1,16 @@
+bannedBlocks:
+  - COMMAND_BLOCK,
+  - CHAIN_COMMAND_BLOCK,
+  - REPEATING_COMMAND_BLOCK,
+  - COMMAND_BLOCK_MINECART,
+  - JIGSAW,
+  - STRUCTURE_BLOCK,
+  - STRUCTURE_VOID,
+  - BARRIER,
+  - DEBUG_STICK,
+  - LIGHT,
+  - BEDROCK
+
+timeBetweenDrop: 4
+
+prefix: "&8 [&bLP&8] &b» &7"

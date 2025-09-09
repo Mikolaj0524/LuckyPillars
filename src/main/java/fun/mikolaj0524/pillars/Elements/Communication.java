@@ -2,21 +2,23 @@ package fun.mikolaj0524.pillars.Elements;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import java.util.List;
+import static fun.mikolaj0524.pillars.Elements.PlayerManager.inGamePlayers;
+import static fun.mikolaj0524.pillars.Pillars.getPluginInstance;
 
 public class Communication {
 
-	public static String prefix = colorText("&8 [&bLP&8] &b» &7");
+	public static String prefix = colorText(getPluginInstance().getConfig().getString("prefix"));
 	public static void messageToAll(String text){
 		for(Player player : Bukkit.getOnlinePlayers()){
 			messageToPlayer(player, text);
 		}
 	}
 
-	public static void messageToList(List<Player> players, String text){
-		for(Player player : players){
+	public static void messageToInGamePlayers(String text){
+		for(Player player : inGamePlayers){
 			messageToPlayer(player, text);
 		}
 	}
@@ -33,6 +35,16 @@ public class Communication {
 
 	public static void titleToPlayer(Player player, String text){
 		player.sendTitle(colorText(text), "", 5, 10, 5);
+	}
+
+	public static void soundToInGamePlayers(Sound sound){
+		for(Player player : Bukkit.getOnlinePlayers()){
+			soundToPlayer(player, sound);
+		}
+	}
+
+	public static void soundToPlayer(Player player, Sound sound){
+		player.playSound(player, sound, 0.5f, 0.5f);
 	}
 
 	public static String prepareText(String text){
