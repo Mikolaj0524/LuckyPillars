@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
+import static fun.mikolaj0524.pillars.Elements.RandomItem.blockedItems;
+
 public class BlockBreak implements Listener {
 
 	@EventHandler
@@ -14,7 +16,9 @@ public class BlockBreak implements Listener {
 		Player player = event.getPlayer();
 		Location loc = event.getBlock().getLocation();
 
-		if((loc.getBlockY() <= 60 || loc.getBlockY() >= 120) && player.getGameMode() != GameMode.CREATIVE){
+		if(( blockedItems.contains(event.getBlock().getType()) || loc.getBlockY() >= 120 )
+
+				&& player.getGameMode() != GameMode.CREATIVE){
 			event.setCancelled(true);
 		}
 	}

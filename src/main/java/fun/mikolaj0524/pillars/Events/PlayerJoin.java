@@ -17,7 +17,7 @@ public class PlayerJoin implements Listener {
 		Player player = event.getPlayer();
 		event.setJoinMessage(prepareText(player.getDisplayName() + " has joined!"));
 		teleportToSpawn(player);
-		playerData.put(player, new PlayerData(0));
+		playerData.put(player, new PlayerData());
 	}
 
 }

@@ -3,8 +3,13 @@ package fun.mikolaj0524.pillars;
 import fun.mikolaj0524.pillars.Elements.PlaceHolderApiHook;
 import fun.mikolaj0524.pillars.Events.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static fun.mikolaj0524.pillars.Elements.SignManager.createSign;
 import static fun.mikolaj0524.pillars.Elements.TeleportPlayer.loadLocations;
@@ -16,11 +21,11 @@ public final class Pillars extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		getServer().getLogger().info("Lucky pillars = start!");
+		getServer().getLogger().info("Lucky pillars - start!");
 		instance = this;
 
 		saveDefaultConfig();
-
+		
 		PluginManager manager = getServer().getPluginManager();
 		manager.registerEvents(new BlockBreak(), this);
 		manager.registerEvents(new BlockPlace(), this);
@@ -44,7 +49,7 @@ public final class Pillars extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		getServer().getLogger().info("Lucky pillars = stop!");
+		getServer().getLogger().info("Lucky pillars - stop!");
 	}
 
 	public static Pillars getPluginInstance(){

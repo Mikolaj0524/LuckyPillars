@@ -1,6 +1,7 @@
 package fun.mikolaj0524.pillars.Elements;
 
 import fun.mikolaj0524.pillars.Objects.Place;
+import fun.mikolaj0524.pillars.Objects.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -26,7 +27,6 @@ public class Game {
 		clearWorld();
 		inGamePlayers.addAll(Bukkit.getOnlinePlayers());
 		gameState = true;
-
 	}
 
 	public static void isEnd(){
@@ -52,8 +52,11 @@ public class Game {
 		inGamePlayers.clear();
 		teleportPlayers(Place.LOBBY);
 
-		for (Player player : Bukkit.getOnlinePlayers()) {
-			playerData.get(player).setKills(0);
+		for (Player player : inGamePlayers) {
+			PlayerData data = playerData.get(player);
+			if(data != null){
+				data.setKills(0);
+			}
 		}
 	}
 

@@ -13,6 +13,7 @@ import java.util.List;
 import static fun.mikolaj0524.pillars.Elements.Communication.messageToPlayer;
 import static fun.mikolaj0524.pillars.Elements.Communication.soundToPlayer;
 import static fun.mikolaj0524.pillars.Elements.Game.restartGame;
+import static fun.mikolaj0524.pillars.Elements.MapManager.clearWorld;
 import static fun.mikolaj0524.pillars.Pillars.getPluginInstance;
 
 public class Command implements Listener, CommandExecutor, TabCompleter {

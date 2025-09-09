@@ -18,14 +18,10 @@ public class SignClick implements Listener {
 		Player player = event.getPlayer();
 		Block block = event.getClickedBlock();
 		if(event.getAction() == Action.RIGHT_CLICK_BLOCK){
-
 			if(block.getType().equals(Material.PALE_OAK_WALL_SIGN) && block.getLocation().getBlockY() == signLoc.getBlockY() && block.getLocation().getBlockX() == signLoc.getBlockX() && block.getLocation().getBlockY() == signLoc.getBlockY()){
 				event.setCancelled(true);
 				signClick(player);
 			}
-
 		}
-
 	}
-
 }

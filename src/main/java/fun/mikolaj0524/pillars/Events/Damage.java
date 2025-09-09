@@ -13,6 +13,7 @@ public class Damage implements Listener {
 	public void onDamage(EntityDamageEvent event){
 		Player player1 = (Player) event.getEntity();
 		Player player2 = (Player) event.getDamageSource().getCausingEntity();
+		event.setCancelled(true);
 
 		double health = player1.getHealth() - event.getFinalDamage();
 		if(health <= 0){

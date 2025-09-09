@@ -43,8 +43,14 @@ public class SignManager {
 				messageToPlayer(player, "Game is now running!");
 			}
 			else {
-				player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 0.5f);
-				startGame();
+				if(Bukkit.getOnlinePlayers().size() >= 2){
+					player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 0.5f);
+					startGame();
+				}
+				else{
+					messageToPlayer(player, "Not enough players to start!");
+					soundToPlayer(player, Sound.BLOCK_NOTE_BLOCK_BASS);
+				}
 			}
 		}
 		else{

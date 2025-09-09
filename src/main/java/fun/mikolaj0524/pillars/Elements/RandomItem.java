@@ -6,6 +6,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import static fun.mikolaj0524.pillars.Elements.PlayerManager.inGamePlayers;
 import static fun.mikolaj0524.pillars.Pillars.getPluginInstance;
@@ -14,7 +15,7 @@ public class RandomItem {
 
 	private static List<Material> materials = List.of(Material.values());
 
-	private static final List<Material> blockedItems = (List<Material>) getPluginInstance().getConfig().getList("bannedBlocks");
+	public static final List<Material> blockedItems = getPluginInstance().getConfig().getStringList("bannedBlocks").stream().map(name -> Material.getMaterial(name.toUpperCase())).collect(Collectors.toList());
 
 	public static void giveItems(){
 		for(Player player : inGamePlayers){

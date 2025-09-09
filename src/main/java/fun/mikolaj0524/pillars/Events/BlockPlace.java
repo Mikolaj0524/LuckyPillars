@@ -14,7 +14,7 @@ public class BlockPlace implements Listener {
 		Player player = event.getPlayer();
 		Location loc = event.getBlock().getLocation();
 
-		if((loc.getBlockY() <= 60 || loc.getBlockY() >= 120) && player.getGameMode() != GameMode.CREATIVE) {
+		if(loc.getBlockY() >= 120 && player.getGameMode() != GameMode.CREATIVE) {
 			event.setCancelled(true);
 		}
 

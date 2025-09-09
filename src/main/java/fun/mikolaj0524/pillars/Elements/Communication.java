@@ -38,7 +38,7 @@ public class Communication {
 	}
 
 	public static void soundToInGamePlayers(Sound sound){
-		for(Player player : Bukkit.getOnlinePlayers()){
+		for(Player player : inGamePlayers){
 			soundToPlayer(player, sound);
 		}
 	}

@@ -12,6 +12,7 @@ import java.util.List;
 
 import static fun.mikolaj0524.pillars.Elements.Communication.messageToAll;
 import static fun.mikolaj0524.pillars.Elements.Communication.soundToInGamePlayers;
+import static fun.mikolaj0524.pillars.Elements.Game.gameState;
 import static fun.mikolaj0524.pillars.Elements.Game.isEnd;
 import static fun.mikolaj0524.pillars.Elements.TeleportPlayer.teleportToSpawn;
 
@@ -39,7 +40,6 @@ public class PlayerManager {
 	}
 
 	public static void playerDeath(Player player1, Player player2){
-
 		teleportToSpawn(player1);
 		soundToInGamePlayers(Sound.ENTITY_LIGHTNING_BOLT_THUNDER);
 		if(player2 == null){
@@ -49,7 +49,10 @@ public class PlayerManager {
 			playerData.get(player2).addKill();
 			messageToAll(player2.getDisplayName() + " has killed " + player1.getDisplayName());
 		}
-		isEnd();
+		inGamePlayers.remove(player1);
+		if(gameState){
+			isEnd();
+		}
 	}
 
 }
