@@ -16,6 +16,7 @@ import static fun.mikolaj0524.pillars.Elements.MapManager.clearWorld;
 import static fun.mikolaj0524.pillars.Elements.PlayerManager.playerData;
 import static fun.mikolaj0524.pillars.Elements.TeleportPlayer.teleportPlayers;
 import static fun.mikolaj0524.pillars.Elements.PlayerManager.inGamePlayers;
+import static fun.mikolaj0524.pillars.Elements.TeleportPlayer.teleportToSpawn;
 
 public class Game {
 	public static Boolean gameState = false;
@@ -32,6 +33,7 @@ public class Game {
 	public static void isEnd(){
 		if(inGamePlayers.size() == 1){
 			Player lastPlayer = inGamePlayers.getFirst();
+			teleportToSpawn(lastPlayer);
 			messageToAll("&b&l" + lastPlayer.getDisplayName() + " won!");
 			for(Player player : inGamePlayers){
 				messageToPlayer(player, "Your kills: &7" + playerData.get(player).getKills());

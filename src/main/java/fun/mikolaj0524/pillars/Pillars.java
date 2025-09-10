@@ -27,6 +27,7 @@ public final class Pillars extends JavaPlugin {
 		saveDefaultConfig();
 		
 		PluginManager manager = getServer().getPluginManager();
+		manager.registerEvents(new PlayerDeath(), this);
 		manager.registerEvents(new BlockBreak(), this);
 		manager.registerEvents(new BlockPlace(), this);
 		manager.registerEvents(new PlayerJoin(), this);

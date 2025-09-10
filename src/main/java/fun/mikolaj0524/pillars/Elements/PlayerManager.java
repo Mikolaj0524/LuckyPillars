@@ -27,13 +27,14 @@ public class PlayerManager {
 		player.setLevel(0);
 		player.setExp(0);
 		player.setTotalExperience(0);
-		player.setSaturation(20);
 		player.getInventory().clear();
 		if(place == Place.LOBBY){
 			player.setInvulnerable(true);
 			player.setGameMode(GameMode.ADVENTURE);
+			player.setSaturation(20);
 		}
 		else{
+			player.setSaturation(0);
 			player.setGameMode(GameMode.SURVIVAL);
 			player.setInvulnerable(false);
 		}
