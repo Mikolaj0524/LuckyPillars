@@ -54,7 +54,7 @@ public class Game {
 		inGamePlayers.clear();
 		teleportPlayers(Place.LOBBY);
 
-		for (Player player : inGamePlayers) {
+		for (Player player : Bukkit.getOnlinePlayers()) {
 			PlayerData data = playerData.get(player);
 			if(data != null){
 				data.setKills(0);
