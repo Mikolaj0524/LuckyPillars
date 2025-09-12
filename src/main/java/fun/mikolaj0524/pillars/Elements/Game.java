@@ -4,9 +4,12 @@ import fun.mikolaj0524.pillars.Objects.Place;
 import fun.mikolaj0524.pillars.Objects.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Registry;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.Collection;
 
@@ -55,6 +58,11 @@ public class Game {
 		teleportPlayers(Place.LOBBY);
 
 		for (Player player : Bukkit.getOnlinePlayers()) {
+
+			for (PotionEffectType potionEffect : Registry.EFFECT) {
+				player.removePotionEffect(potionEffect);
+			}
+
 			PlayerData data = playerData.get(player);
 			if(data != null){
 				data.setKills(0);
