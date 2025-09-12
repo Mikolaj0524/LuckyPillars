@@ -35,6 +35,8 @@ public final class Pillars extends JavaPlugin {
 		manager.registerEvents(new PlayerMove(), this);
 		manager.registerEvents(new SignClick(), this);
 		manager.registerEvents(new Damage(), this);
+		manager.registerEvents(new Explosion(), this);
+		manager.registerEvents(new PlayerInteract(), this);
 
 		loop();
 		loadLocations();
