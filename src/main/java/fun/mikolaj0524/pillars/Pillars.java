@@ -3,14 +3,10 @@ package fun.mikolaj0524.pillars;
 import fun.mikolaj0524.pillars.Elements.PlaceHolderApiHook;
 import fun.mikolaj0524.pillars.Events.*;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import static fun.mikolaj0524.pillars.Elements.RandomItem.loadMaterials;
 import static fun.mikolaj0524.pillars.Elements.SignManager.createSign;
 import static fun.mikolaj0524.pillars.Elements.TeleportPlayer.loadLocations;
 import static fun.mikolaj0524.pillars.Elements.Timer.itemsLoop;
@@ -25,7 +21,9 @@ public final class Pillars extends JavaPlugin {
 		instance = this;
 
 		saveDefaultConfig();
-		
+
+		loadMaterials();
+
 		PluginManager manager = getServer().getPluginManager();
 		manager.registerEvents(new PlayerDeath(), this);
 		manager.registerEvents(new BlockBreak(), this);
@@ -37,6 +35,7 @@ public final class Pillars extends JavaPlugin {
 		manager.registerEvents(new Damage(), this);
 		manager.registerEvents(new Explosion(), this);
 		manager.registerEvents(new PlayerInteract(), this);
+		manager.registerEvents(new ProjectileHit(), this);
 
 		loop();
 		loadLocations();

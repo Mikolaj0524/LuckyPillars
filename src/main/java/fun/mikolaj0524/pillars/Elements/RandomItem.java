@@ -13,9 +13,13 @@ import static fun.mikolaj0524.pillars.Pillars.getPluginInstance;
 
 public class RandomItem {
 
-	private static List<Material> materials = List.of(Material.values());
+	private static List<Material> materials;
 
 	public static final List<Material> blockedItems = getPluginInstance().getConfig().getStringList("bannedBlocks").stream().map(name -> Material.getMaterial(name.toUpperCase())).collect(Collectors.toList());
+
+	public static void loadMaterials(){
+		materials = List.of(Material.values());
+	}
 
 	public static void giveItems(){
 		for(Player player : inGamePlayers){

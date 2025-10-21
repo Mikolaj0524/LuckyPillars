@@ -4,6 +4,7 @@ import fun.mikolaj0524.pillars.Objects.Place;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Random;
 
 import static fun.mikolaj0524.pillars.Elements.PlayerManager.inGamePlayers;
 import static fun.mikolaj0524.pillars.Elements.PlayerManager.preparePlayer;
+import static fun.mikolaj0524.pillars.Pillars.getPluginInstance;
 
 public class TeleportPlayer {
 
@@ -20,16 +22,16 @@ public class TeleportPlayer {
 
 	public static void loadLocations(){
 		World world = Bukkit.getWorld("world");
-		spawn = new Location(world, 0.5, 131, 0.5, 180, 0);
-		pillars.add(new Location(world, 0, 102, 15, 180, 0));
-		pillars.add(new Location(world, 10, 102, 10, 135, 0));
-		pillars.add(new Location(world, 15, 102, 0, 90, 0));
-		pillars.add(new Location(world, 10, 102, -10, 45, 0));
-		pillars.add(new Location(world, 0, 102, -15, 0, 0));
-		pillars.add(new Location(world, -10, 102, -10, -45, 0));
-		pillars.add(new Location(world, -15, 102, 0, -90, 0));
-		pillars.add(new Location(world, -10, 102, 10, -135, 0));
+		Configuration cfg = getPluginInstance().getConfig();
+		spawn = new Location(world, cfg.getDouble("spawn.x"), cfg.getDouble("spawn.y"), cfg.getDouble("spawn.z"), cfg.getInt("spawn.yaw"), 0);
 
+		for(String key : cfg.getConfigurationSection("pillars").getKeys(false)){
+			double x = cfg.getDouble("pillars." + key + ".x");
+			double y = cfg.getDouble("pillars." + key + ".y");
+			double z = cfg.getDouble("pillars." + key + ".z");
+			int yaw = cfg.getInt("pillars." + key + ".yaw");
+			pillars.add(new Location(world, x, y, z, yaw, 0));
+		}
 	}
 
 	public static void teleportToSpawn(Player player){

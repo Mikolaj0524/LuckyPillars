@@ -22,9 +22,8 @@ public class PlayerQuit implements Listener {
 		soundToPlayer(player, Sound.ENTITY_PLAYER_LEVELUP);
 		playerData.remove(player);
 		inGamePlayers.remove(player);
-		if(gameState){
+		if(gameState)
 			isEnd();
-		}
 	}
 
 }

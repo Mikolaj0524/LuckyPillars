@@ -1,3 +1,7 @@
+prefix: "&8 [&bLP&8] &b» &7"
+
+timeBetweenDrop: 4
+
 bannedBlocks:
   - COMMAND_BLOCK
   - CHAIN_COMMAND_BLOCK
@@ -13,7 +17,58 @@ bannedBlocks:
   - END_STONE
   - CHORUS_PLANT
   - CHORUS_FLOWER
+  - DRAGON_EGG
 
-timeBetweenDrop: 4
+spawn:
+  x: 0.5
+  y: 131
+  z: 0.5
+  yaw: 180
 
-prefix: "&8 [&bLP&8] &b» &7"
+sign:
+  x: 0
+  y: 132
+  z: -5
+  facing: SOUTH
+
+pillars:
+  1:
+    x: 0
+    y: 102
+    z: 15
+    yaw: 180
+  2:
+    x: 10
+    y: 102
+    z: 10
+    yaw: 135
+  3:
+    x: 15
+    y: 102
+    z: 0
+    yaw: 90
+  4:
+    x: 10
+    y: 102
+    z: -10
+    yaw: 45
+  5:
+    x: 0
+    y: 102
+    z: -15
+    yaw: 0
+  6:
+    x: -10
+    y: 102
+    z: -10
+    yaw: -45
+  7:
+    x: -15
+    y: 102
+    z: 0
+    yaw: -90
+  8:
+    x: -10
+    y: 102
+    z: 10
+    yaw: -135

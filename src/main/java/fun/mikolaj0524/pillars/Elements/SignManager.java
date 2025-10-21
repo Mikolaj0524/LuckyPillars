@@ -10,22 +10,28 @@ import org.bukkit.block.Sign;
 import org.bukkit.block.data.type.WallSign;
 import org.bukkit.block.sign.Side;
 import org.bukkit.block.sign.SignSide;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 
 import static fun.mikolaj0524.pillars.Elements.Communication.*;
 import static fun.mikolaj0524.pillars.Elements.Game.gameState;
 import static fun.mikolaj0524.pillars.Elements.Game.startGame;
+import static fun.mikolaj0524.pillars.Pillars.getPluginInstance;
 
 public class SignManager {
 
-	public static final Location signLoc = new Location(Bukkit.getWorld("world"), 0, 132, -5);
+	public static Location signLoc;
 
 	public static void createSign(){
+		Configuration cfg = getPluginInstance().getConfig();
+
+		signLoc = new Location(Bukkit.getWorld("world"), cfg.getDouble("sign.x"), cfg.getDouble("sign.y"), cfg.getDouble("sign.z"));
+
 		Block block = signLoc.getWorld().getBlockAt(signLoc);
 		block.setType(Material.PALE_OAK_WALL_SIGN);
 
 		WallSign wallSign = (WallSign) block.getBlockData();
-		wallSign.setFacing(BlockFace.SOUTH);
+		wallSign.setFacing(BlockFace.valueOf(cfg.getString("sign.facing")));
 		block.setBlockData(wallSign, false);
 
 		Sign sign = (Sign) block.getState();
@@ -37,7 +43,7 @@ public class SignManager {
 	}
 
 	public static void signClick(Player player){
-		if(player.hasPermission("pillars.start")){
+		if(player.hasPermission("luckypillars.start")){
 			if(gameState){
 				soundToPlayer(player, Sound.BLOCK_NOTE_BLOCK_BASS);
 				messageToPlayer(player, "Game is now running!");
@@ -54,7 +60,7 @@ public class SignManager {
 			}
 		}
 		else{
-			messageToPlayer(player, "You don't have <pillars.start> permission!");
+			messageToPlayer(player, "You don't have <luckypillars.start> permission!");
 			soundToPlayer(player, Sound.BLOCK_NOTE_BLOCK_BASS);
 		}
 	}

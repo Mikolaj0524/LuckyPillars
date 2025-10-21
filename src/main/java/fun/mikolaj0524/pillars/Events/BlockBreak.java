@@ -16,9 +16,7 @@ public class BlockBreak implements Listener {
 		Player player = event.getPlayer();
 		Location loc = event.getBlock().getLocation();
 
-		if(( blockedItems.contains(event.getBlock().getType()) || loc.getBlockY() >= 120 )
-
-				&& player.getGameMode() != GameMode.CREATIVE){
+		if(( blockedItems.contains(event.getBlock().getType()) || loc.getBlockY() >= 120 ) && player.getGameMode() != GameMode.CREATIVE){
 			event.setCancelled(true);
 		}
 	}
